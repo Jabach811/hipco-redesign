@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Harrington Process Solutions</title>
+<meta name="description" content="Request a quote, ask a question, or book a service call. A live person answers 1-800-877-4472 around the clock.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav"><div class="container nav__bar">
+  <a class="logo" href="index.html"><img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions"></a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav class="nav__links" id="site-nav" aria-label="Main">
+    <a href="products.html">Products</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="locations.html">Locations</a><a href="knowledge.html">Knowledge</a><a href="about.html">About</a>
+  </nav>
+  <div class="nav__cta section--inverse" style="background:transparent"><a class="btn btn--secondary" href="https://store.hipco.com">Store login</a><a class="btn btn--primary" href="contact.html#quote">Get a quote</a></div>
+</div></header>
+
+<main id="main">
+<section class="page-head">
+  <img class="page-head__bg" src="img/photos/hero-delivery.webp" alt="" width="2000" height="1067" fetchpriority="high">
+  <div class="container">
+    <p class="label">Contact</p>
+    <h1>Tell us what's running through it.</h1>
+    <p class="lede">Part numbers, a drawing, or just the chemistry and the pressure. Send it and a person at your nearest branch will answer. If it can't wait, call. Someone picks up 24 hours a day, 7 days a week.</p>
+    <div class="row section--inverse" style="background:transparent"><a class="btn btn--primary" href="tel:+18008774472">1-800-877-4472</a><a class="btn btn--secondary" href="#form">Write to us</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container ask">
+    <aside>
+      <dl class="reach">
+        <div><dt>Phone, 24/7</dt><dd><a href="tel:+18008774472">1-800-877-4472</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:info@hipco.com">info@hipco.com</a></dd></div>
+        <div><dt>Your branch</dt><dd>Local stock and will-call pickup at 90 counters.<br><a class="link" href="locations.html">Find the nearest one</a></dd></div>
+        <div><dt>Headquarters</dt><dd>14480 Yorba Ave<br>Chino, CA 91710</dd></div>
+        <div><dt>Billing and credit</dt><dd><a href="mailto:creditservices@hipco.com">creditservices@hipco.com</a></dd></div>
+        <div><dt>Have part numbers already?</dt><dd>Paste them straight into the store's bulk order form and quote the whole list at once.<br><a class="link" href="https://store.hipco.com/addProductsToCart">Bulk quote order</a></dd></div>
+      </dl>
+    </aside>
+
+    <form class="form" id="form" novalidate>
+      <fieldset>
+        <legend>What do you need?</legend>
+        <div class="topic">
+          <label><input type="radio" name="topic" value="quote" id="quote" checked> A quote</label>
+          <label><input type="radio" name="topic" value="question" id="question"> An answer</label>
+          <label><input type="radio" name="topic" value="service" id="service"> A service call</label>
+          <label><input type="radio" name="topic" value="other" id="other"> Something else</label>
+        </div>
+      </fieldset>
+
+      <div class="g2">
+        <div class="field"><label for="name">Name</label><input class="input" id="name" name="name" autocomplete="name" required><p class="field-error" id="name-err">Enter your name.</p></div>
+        <div class="field"><label for="company">Company</label><input class="input" id="company" name="company" autocomplete="organization" required><p class="field-error" id="company-err">Enter your company.</p></div>
+      </div>
+      <div class="g2">
+        <div class="field"><label for="email">Work email</label><input class="input" id="email" name="email" type="email" autocomplete="email" required><p class="field-error" id="email-err">Enter a valid email address.</p></div>
+        <div class="field"><label for="phone">Phone</label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel"><p class="hint">Optional. Fastest way to sort out details.</p></div>
+      </div>
+      <div class="g2">
+        <div class="field"><label for="where">City and state</label><input class="input" id="where" name="where" placeholder="Chino, CA" required><p class="hint">Routes you to the right branch. Outside the U.S., put the country.</p><p class="field-error" id="where-err">Tell us where the job is.</p></div>
+        <div class="field"><label for="acct">Account</label><select class="input" id="acct" name="acct"><option value="new">New customer</option><option value="existing">Existing customer</option></select></div>
+      </div>
+
+      <div class="field" id="parts-field">
+        <label for="parts">Parts and quantities</label>
+        <textarea class="input" id="parts" name="parts" rows="4" placeholder="4 × Spears 2&quot; Sch 80 PVC true union ball valve, socket&#10;200 ft 2&quot; Sch 80 PVC pipe"></textarea>
+        <p class="hint">Part numbers if you have them. Otherwise size, material, and what the line carries.</p>
+      </div>
+
+      <div class="field">
+        <label for="msg" id="msg-label">Anything else we should know</label>
+        <textarea class="input" id="msg" name="msg" rows="5" required></textarea>
+        <p class="field-error" id="msg-err">Give us a little to go on.</p>
+      </div>
+
+      <div class="field">
+        <label for="file">Attach a drawing or spec</label>
+        <input id="file" name="file" type="file" accept=".pdf,.dwg,.dxf,.png,.jpg,.jpeg,.xlsx,.csv" multiple>
+        <p class="hint">PDF, DWG, DXF, images, or a spreadsheet. Up to 25 MB.</p>
+      </div>
+
+      <label class="chk"><input type="checkbox" name="news" value="1"> Send the occasional product and training email. We don't share your address.</label>
+
+      <div class="row"><button class="btn btn--primary" type="submit">Send</button><span class="hint">A person replies within one business day. Same day if you call.</span></div>
+    </form>
+
+    <div class="notice notice--success" id="sent" hidden role="status">
+      <p><b>Got it.</b> Your message is on its way to the branch nearest <span id="sent-where"></span>. Someone will reply within one business day at <span id="sent-email"></span>. If it can't wait, call <a href="tel:+18008774472">1-800-877-4472</a>.<br><span class="muted">Prototype note: nothing was actually sent.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--subtle">
+  <div class="container spec">
+    <div>
+      <p class="label">Other doors</p>
+      <h2>Not a sales question?</h2>
+      <p class="muted" style="margin-top:var(--space-4)">Some things go faster straight to the right desk.</p>
+    </div>
+    <ol>
+      <li><div><b>Open a store account</b><span>Order online, reorder from history, pay by PO or card, and pull invoices without calling anyone. <a class="link" href="https://store.hipco.com/login">Sign up or log in</a></span></div></li>
+      <li><div><b>Invoices and credit</b><span>Payment questions, credit applications, and W-9 requests go to the credit services team. <a class="link" href="mailto:creditservices@hipco.com">creditservices@hipco.com</a></span></div></li>
+      <li><div><b>Pump service and repair</b><span>Emergency and scheduled pump work runs through PumpMan, coast to coast. Pick "A service call" above or call the main line and ask for PumpMan.</span></div></li>
+      <li><div><b>Suppliers and partners</b><span>Line card requests, new supplier inquiries, and companies interested in joining the Harrington family. <a class="link" href="about.html#family">About the family</a></span></div></li>
+      <li><div><b>Careers</b><span>Branch, warehouse, sales, engineering, and corporate roles in 34 states. <a class="link" href="about.html#careers">See open roles</a></span></div></li>
+      <li><div><b>Export orders</b><span>We ship worldwide. Put your country in the location field and the export desk picks it up.</span></div></li>
+    </ol>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  var form=document.getElementById('form'),parts=document.getElementById('parts-field'),msgLabel=document.getElementById('msg-label'),msg=document.getElementById('msg');
+  var labels={quote:['Anything else we should know','Delivery date, jobsite, or what the line carries.'],question:['Your question','Material, chemistry, temperature, pressure. The more the better.'],service:['What needs service','Equipment, location, and whether it is down right now.'],other:['How can we help','']};
+  function topic(){
+    var t=form.topic.value; parts.hidden=t!=='quote';
+    msgLabel.textContent=labels[t][0]; msg.placeholder=labels[t][1];
+  }
+  function fromHash(){ var r=document.getElementById(location.hash.slice(1)); if(r&&r.type==='radio'){ r.checked=true; topic(); } }
+  [].forEach.call(form.topic,function(r){ r.addEventListener('change',topic); }); topic(); fromHash();
+  window.addEventListener('hashchange',fromHash);
+  function check(el){
+    var f=el.closest('.field'),ok=el.checkValidity();
+    f.classList.toggle('field--err',!ok); el.setAttribute('aria-invalid',ok?'false':'true');
+    if(!ok) el.setAttribute('aria-describedby',el.id+'-err'); else el.removeAttribute('aria-describedby');
+    return ok;
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); var first=null;
+    [].forEach.call(form.querySelectorAll('[required]'),function(el){ if(!check(el)&&!first) first=el; });
+    if(first){ first.focus(); return; }
+    document.getElementById('sent-where').textContent=form.where.value.trim();
+    document.getElementById('sent-email').textContent=form.email.value.trim();
+    form.hidden=true; var s=document.getElementById('sent'); s.hidden=false; s.scrollIntoView({block:'center'});
+  });
+  [].forEach.call(form.querySelectorAll('[required]'),function(el){ el.addEventListener('blur',function(){ if(el.value) check(el); }); el.addEventListener('input',function(){ if(el.closest('.field').classList.contains('field--err')) check(el); }); });
+})();
+</script>
+<footer class="foot"><div class="container">
+  <div class="cols">
+    <div>
+      <img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions">
+      <p class="mono addr">14480 Yorba Ave.<br>Chino, CA 91710<br><a href="tel:+18008774472" style="display:inline;margin:0">1-800-877-4472</a></p>
+      <p class="tag">Flow Controlled. Value Delivered.™</p>
+    </div>
+    <div><h4>Products</h4><a href="products.html#pipe">Pipe &amp; fittings</a><a href="products.html#valves">Valves &amp; actuation</a><a href="products.html#filtration">Filtration</a><a href="products.html#pumps">Pumps</a><a href="products.html#instrumentation">Instrumentation</a><a href="products.html#tanks">Tanks</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="about.html#leadership">Leadership</a><a href="about.html#timeline">History</a><a href="about.html#careers">Careers</a><a href="https://www.hipco.com/health-safety-and-environment/">Sustainability</a><a href="about.html#family">M&amp;A partnerships</a></div>
+    <div><h4>Buy</h4><a href="https://store.hipco.com">Shop online</a><a href="https://store.hipco.com">Store login</a><a href="contact.html#quote">Request a quote</a><a href="suppliers.html#cards">Line cards</a><a href="contact.html#question">Catalog request</a></div>
+    <div><h4>Help</h4><a href="locations.html">Branch locations</a><a href="contact.html">Contact</a><a href="knowledge.html#faq">FAQs</a><a href="legal.html#terms">Terms of sale</a><a href="legal.html#export">Export compliance</a></div>
+  </div>
+  <div class="base">
+    <span>© 2026 Harrington Process Solutions LLC</span>
+    <span><a href="legal.html#privacy">Privacy</a><a href="legal.html#accessibility">Accessibility</a><a href="legal.html#prop65">CA Prop 65</a><a href="https://www.linkedin.com/company/harrington-process-solutions">LinkedIn</a><a href="https://www.youtube.com/@harringtonprocesssolutions">YouTube</a></span>
+  </div>
+</div></footer>
+
+<script>
+  const nav = document.querySelector('.nav');
+  const toggle = nav.querySelector('.nav__toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+</script>
+</body>
+</html>
