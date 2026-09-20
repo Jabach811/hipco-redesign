@@ -43,7 +43,7 @@
     const rows=await load();
     cur=rows.filter(r=>match(r,g));
     if(s==='id-desc') cur=[...cur].reverse();
-    else if(s==='mfg') cur=[...cur].sort((a,b)=>(a.mfg||'').localeCompare(b.mfg||'')||a.id.localeCompare(b.id));
+    else if(s==='mfg') cur=[...cur].sort((a,b)=>(a.mfg||'~').localeCompare(b.mfg||'~')||a.id.localeCompare(b.id));
     list.innerHTML=''; shown=0;
     if(pager) pager.hidden=true;
     if(!more){ more=document.createElement('div'); more.className='shop__more'; more.innerHTML='<button class="btn btn--secondary" type="button">Show more</button>'; list.after(more); more.firstChild.onclick=renderMore; }
