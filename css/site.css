@@ -499,3 +499,4 @@ a.shop__name:hover { color: var(--fg-brand); }
   .cart td { border: 0; padding: 0; }
   .cart td:first-child { grid-column: 1 / -1; }
 }
+.pager { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-top: var(--space-8); font-size: var(--text-sm); color: var(--fg-subtle); }
