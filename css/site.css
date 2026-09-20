@@ -268,7 +268,7 @@
 .loc-directory__head { display: flex; justify-content: space-between; gap: var(--space-8); align-items: end; margin-bottom: var(--space-8); padding-bottom: var(--space-6); border-bottom: 1px solid var(--border); }
 .loc-directory__head .label { margin: 0; }
 .loc-directory__head .muted { max-width: 32rem; margin: 0; text-align: right; }
-.st { display: grid; grid-template-columns: 12rem 1fr; gap: var(--space-8); padding-block: var(--space-8); border-top: 1px solid var(--border); scroll-margin-top: 4rem; }
+.st { display: grid; grid-template-columns: 12rem 1fr; gap: var(--space-8); padding-block: var(--space-8); border-top: 1px solid var(--border); scroll-margin-top: 4rem; content-visibility: auto; contain-intrinsic-size: auto 54rem; }
 .st:first-of-type { border-top: 0; padding-top: 0; }
 .st h2 { font-size: var(--text-md); position: sticky; top: 4.5rem; }
 .st h2 .n { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 400; color: var(--fg-subtle); margin-left: var(--space-2); }
@@ -475,6 +475,8 @@
 .shop__bar { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); flex-wrap: wrap; font-size: var(--text-sm); color: var(--fg-subtle); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border-strong); }
 .shop__bar label { display: flex; gap: var(--space-2); align-items: center; }
 .shop__bar .input { padding: var(--space-1) var(--space-2); font-size: var(--text-sm); }
+.search-controls { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-2) var(--space-4); flex-wrap: wrap; }
+.search-controls select { max-width: 13rem; }
 .shop__list { list-style: none; padding: 0; margin: 0; }
 .shop__item { display: grid; grid-template-columns: 5rem 1fr auto; gap: var(--space-5); align-items: start; padding-block: var(--space-5); border-bottom: 1px solid var(--border); }
 .shop__item img { width: 5rem; height: 5rem; object-fit: contain; }
@@ -513,6 +515,7 @@ a.shop__name:hover { color: var(--fg-brand); }
 @media (max-width: 56rem) {
   .shop__grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .shop__filters { position: static; }
+  .search-controls { justify-content: flex-start; width: 100%; }
   .shop__item { grid-template-columns: 4rem 1fr; }
   .shop__item img { width: 4rem; height: 4rem; }
   .shop__buy { grid-column: 2; justify-items: start; text-align: left; }

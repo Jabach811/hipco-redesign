@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jabach811.github.io/hipco-redesign/sitemap.xml

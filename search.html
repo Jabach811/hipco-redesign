@@ -11,12 +11,19 @@
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/site.css">
+<link rel="canonical" href="https://jabach811.github.io/hipco-redesign/search.html">
+<meta property="og:title" content="Search · Harrington Process Solutions">
+<meta property="og:description" content="Search the Harrington store by part number, manufacturer, or description.">
+<meta property="og:url" content="https://jabach811.github.io/hipco-redesign/search.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Harrington Process Solutions">
+<meta name="twitter:card" content="summary">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav"><div class="container nav__bar">
-  <a class="logo" href="index.html"><img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions"></a>
+  <a class="logo" href="index.html"><img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions" width="500" height="110"></a>
   <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
   <nav class="nav__links" id="site-nav" aria-label="Main">
     <a href="products.html">Products</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="locations.html">Locations</a><a href="knowledge.html">Knowledge</a><a href="about.html">About</a>
@@ -29,34 +36,48 @@
 <nav class="crumbs" aria-label="Breadcrumb"><a href="store.html">Store</a><span>/</span><span aria-current="page">Search</span></nav>
 <div class="shop__head"><h1 id="sh">Search the store</h1><p class="muted" id="sp">Part number, manufacturer, or description.</p></div>
 <form class="store-search" style="margin-top:0" action="search.html" method="get" role="search"><label class="sr-only" for="q">Search the store</label><input class="input" id="q" name="q" type="search" placeholder="Part number, manufacturer, or description" autocomplete="off"><button class="btn btn--primary" type="submit">Search</button></form>
-<div class="shop__bar" id="bar" hidden><span class="shop__count" id="cnt"></span><label>Sort <select class="input" id="sort"><option value="">Best match</option><option value="id">Item number, A to Z</option><option value="id-desc">Item number, Z to A</option><option value="mfg">Manufacturer, A to Z</option></select></label></div>
+<div class="shop__bar" id="bar" hidden><span class="shop__count" id="cnt" aria-live="polite"></span><div class="search-controls"><label>Category <select class="input" id="category-filter"><option value="">All categories</option></select></label><label>Manufacturer <select class="input" id="manufacturer-filter"><option value="">All manufacturers</option></select></label><label>Sort <select class="input" id="sort"><option value="">Best match</option><option value="id">Item number, A to Z</option><option value="id-desc">Item number, Z to A</option><option value="mfg">Manufacturer, A to Z</option></select></label><button class="shop__clear" id="clear" type="button" hidden>Clear filters</button></div></div>
 <ol class="shop__list results" id="res"></ol>
 <p class="shop__note" id="note"></p>
+<div class="shop__more" id="more" hidden><button class="btn btn--secondary" type="button">Load more results</button></div>
 </div></section>
 </main>
 <script>
-const q=new URLSearchParams(location.search).get('q')||'';
+const params=new URLSearchParams(location.search),q=params.get('q')||'';
+const PAGE_SIZE=48;
 document.getElementById('q').value=q;
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 if(q.trim()){
   document.getElementById('sh').textContent=`Searching for “${q}”`;
   fetch('search-index.json').then(r=>r.json()).then(IDX=>{
   const words=q.toLowerCase().split(/\s+/).filter(Boolean);
-  const hits=IDX.filter(p=>{const h=(p.n+' '+p.id+' '+p.mfg+' '+p.cat).toLowerCase();return words.every(w=>h.includes(w));});
+  const query=q.trim().toLowerCase();
+  const score=p=>{const id=(p.id||'').toLowerCase(),name=(p.n||'').toLowerCase(),mfg=(p.mfg||'').toLowerCase(),cat=(p.cat||'').toLowerCase();let n=0;if(id===query)n+=1000;if(id.startsWith(query))n+=500;if(name.startsWith(query))n+=250;if(mfg.startsWith(query)||cat.startsWith(query))n+=100;for(const word of words){if(id.includes(word))n+=40;if(name.includes(word))n+=20;if(mfg.includes(word)||cat.includes(word))n+=8;}return n;};
+  const hits=IDX.filter(p=>{const h=(p.n+' '+p.id+' '+p.mfg+' '+p.cat).toLowerCase();return words.every(w=>h.includes(w));}).map(p=>({...p,_score:score(p)}));
   document.getElementById('sh').textContent=hits.length?`${hits.length.toLocaleString()} result${hits.length==1?'':'s'} for “${q}”`:`No results for “${q}”`;
   document.getElementById('sp').textContent=hits.length?'Searches every product in the store by item number, name, manufacturer, and category.':'Try a part number, a manufacturer name, or a shorter description.';
-  const show=()=>{const s=document.getElementById('sort').value;let L=hits;if(s==='id')L=[...hits].sort((a,b)=>a.id.localeCompare(b.id));else if(s==='id-desc')L=[...hits].sort((a,b)=>b.id.localeCompare(a.id));else if(s==='mfg')L=[...hits].sort((a,b)=>(!a.mfg)-(!b.mfg)||(a.mfg||'').localeCompare(b.mfg||'')||a.id.localeCompare(b.id));
-  document.getElementById('res').innerHTML=L.slice(0,100).map(p=>`<li class="shop__item"><a href="${p.href}"><img src="${p.img||'img/store/none.svg'}" alt="" width="80" height="80" loading="lazy"></a><div><a class="shop__name" href="${p.href}">${esc(p.n)}</a><div class="shop__meta"><span class="mono">Item # ${esc(p.id)}</span>${p.mfg?`<span>${esc(p.mfg)}</span>`:''}<span>${esc(p.cat)}</span></div></div><div class="shop__buy"><span><a href="signin.html">Sign in for price</a></span><form class="shop__qty" action="cart.html"><input class="input" type="number" name="qty" value="1" min="1" aria-label="Quantity"><button class="btn btn--primary" type="submit">Add to cart</button></form></div></li>`).join('');
-  };
-  document.getElementById('bar').hidden=!hits.length; document.getElementById('cnt').textContent=`${Math.min(hits.length,100)} of ${hits.length.toLocaleString()} shown`; document.getElementById('sort').onchange=show; show();
-  if(hits.length>100) document.getElementById('note').textContent=`Showing the first 100 of ${hits.length.toLocaleString()}. Add a size or manufacturer to narrow it down.`;
+  const category=document.getElementById('category-filter'),manufacturer=document.getElementById('manufacturer-filter'),sort=document.getElementById('sort'),results=document.getElementById('res'),count=document.getElementById('cnt'),note=document.getElementById('note'),more=document.getElementById('more'),clear=document.getElementById('clear');
+  const option=(value,label)=>`<option value="${esc(value)}">${esc(label)}</option>`;
+  const fill=(element,values,empty)=>element.insertAdjacentHTML('beforeend',values.sort((a,b)=>a.localeCompare(b)).map(value=>option(value,value)).join(''));
+  fill(category,[...new Set(hits.map(p=>p.cat).filter(Boolean))],'All categories');
+  fill(manufacturer,[...new Set(hits.map(p=>p.mfg).filter(Boolean))],'All manufacturers');
+  category.value=params.get('category')||''; manufacturer.value=params.get('manufacturer')||''; sort.value=params.get('sort')||'';
+  let shown=Math.max(PAGE_SIZE,Number(params.get('shown'))||PAGE_SIZE);
+  const sync=()=>{const next=new URLSearchParams({q});if(category.value)next.set('category',category.value);if(manufacturer.value)next.set('manufacturer',manufacturer.value);if(sort.value)next.set('sort',sort.value);if(shown>PAGE_SIZE)next.set('shown',shown);history.replaceState(null,'',`search.html?${next}`);};
+  const row=p=>`<li class="shop__item"><a href="${p.href}"><img src="${p.img||'img/store/none.svg'}" alt="" width="80" height="80" loading="lazy"></a><div><a class="shop__name" href="${p.href}">${esc(p.n)}</a><div class="shop__meta"><span class="mono">Item # ${esc(p.id)}</span>${p.mfg?`<span>${esc(p.mfg)}</span>`:''}<span>${esc(p.cat)}</span></div></div><div class="shop__buy"><span><a href="signin.html">Sign in for price</a></span><form class="shop__qty" action="cart.html"><input class="input" type="number" name="qty" value="1" min="1" aria-label="Quantity"><button class="btn btn--primary" type="submit">Add to cart</button></form></div></li>`;
+  const show=()=>{const filtered=hits.filter(p=>(!category.value||p.cat===category.value)&&(!manufacturer.value||p.mfg===manufacturer.value));const s=sort.value;let list=[...filtered];if(s==='id')list.sort((a,b)=>a.id.localeCompare(b.id));else if(s==='id-desc')list.sort((a,b)=>b.id.localeCompare(a.id));else if(s==='mfg')list.sort((a,b)=>(!a.mfg)-(!b.mfg)||(a.mfg||'').localeCompare(b.mfg||'')||a.id.localeCompare(b.id));else list.sort((a,b)=>b._score-a._score||a.id.localeCompare(b.id));const visible=list.slice(0,shown);results.innerHTML=visible.map(row).join('');count.textContent=`${visible.length.toLocaleString()} of ${list.length.toLocaleString()} shown`;more.hidden=shown>=list.length;clear.hidden=!category.value&&!manufacturer.value&&!sort.value;note.textContent=list.length?'':'No products match those filters. Clear a filter or try a shorter search.';};
+  const reset=()=>{shown=PAGE_SIZE;sync();show();};
+  [category,manufacturer,sort].forEach(control=>control.addEventListener('change',reset));
+  clear.addEventListener('click',()=>{category.value='';manufacturer.value='';sort.value='';reset();});
+  more.firstElementChild.addEventListener('click',()=>{shown+=PAGE_SIZE;sync();show();});
+  document.getElementById('bar').hidden=!hits.length; show();
   });
 }
 </script>
 <footer class="foot"><div class="container">
   <div class="cols">
     <div>
-      <img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions">
+      <img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions" width="500" height="110">
       <p class="mono addr">14480 Yorba Ave.<br>Chino, CA 91710<br><a href="tel:+18008774472" style="display:inline;margin:0">1-800-877-4472</a></p>
       <p class="tag">Flow Controlled. Value Delivered.™</p>
     </div>
