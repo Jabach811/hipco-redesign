@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chilled water vs direct-to-chip cooling: piping system implications · Harrington Process Solutions</title>
+<meta name="description" content="Two ways to cool an AI data hall, and what each one asks of the pipe, the joints, and the water chemistry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav"><div class="container nav__bar">
+  <a class="logo" href="index.html"><img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions"></a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  <nav class="nav__links" id="site-nav" aria-label="Main">
+    <a href="products.html">Products</a><a href="services.html">Services</a><a href="industries.html">Industries</a><a href="locations.html">Locations</a><a href="knowledge.html" aria-current="page">Knowledge</a><a href="about.html">About</a>
+  </nav>
+  <div class="nav__cta section--inverse" style="background:transparent"><a class="btn btn--secondary" href="https://store.hipco.com">Store login</a><a class="btn btn--primary" href="contact.html#quote">Get a quote</a></div>
+</div></header>
+
+<main id="main">
+<article class="article">
+  <div class="container"><div class="narrow">
+    <p class="meta"><a href="knowledge.html#articles">Articles</a> · Insight · August 11, 2026</p>
+    <h1>Chilled water vs direct-to-chip cooling: piping system implications</h1>
+    <p class="lede">Two ways to cool an AI data hall, and what each one asks of the pipe, the joints, and the water chemistry.</p>
+    
+    <figure><img src="img/photos/news/chilled-water.webp" alt="Diagram comparing chilled water and direct-to-chip cooling loops" width="1200" height="600"></figure>
+    <div class="prose">
+<h2>The cooling architecture you pick this quarter is the piping you live with for 20 years.</h2>
+<p>The rack density number lands on your desk and everything downstream changes. A traditional enterprise hall ran 5 to 10 kW per rack and air handled it comfortably. The AI build you are scoping now specifies 50 kW, 100 kW, or more per rack. At this density, air alone cannot remove that much heat. So the decision arrives: stay with chilled water and air handlers, move to direct-to-chip liquid cooling, or run some hybrid of the two.</p>
+<p>Most of the conversations around that decision happen at the IT and mechanical-plant level. What gets discussed far less is that the choice subtly defines your entire piping specification. Pipe material, diameter, pressure class, joining method, valve automation, containment strategy, and instrumentation all follow from it, and all of them are difficult and expensive to change once the slab is poured and the hall is live.</p>
+<p>The stakes are asymmetric in a way that should shape how carefully you approach this:</p>
+<ul>
+<li><b>Undersize the distribution and you cap the facility.</b> Pipe diameter set for today's density becomes the ceiling on tomorrow's. Retrofitting a larger header through an occupied data hall costs far more than installing it correctly the first time.</li>
+<li><b>Pick the wrong joining method and you inherit leak risk.</b> Every joint is a potential leak point, and a coolant leak above a live server row is not a maintenance ticket. It is an incident with equipment loss and downtime attached.</li>
+<li><b>Miss the material margin and you get slow failure.</b> Glycol concentration, return-water temperature, and pressure at temperature all interact. A material that works at commissioning can degrade over years in service.</li>
+</ul>
+<p>The good news: the facility-side piping for both architectures is well-understood thermoplastic process piping. Once you see how each system actually distributes fluid, the specification decisions become straightforward engineering.</p>
+
+<h2>The facility side is more familiar than it looks.</h2>
+<p>There is a persistent misconception worth clearing up early, because it changes who you need to talk to. Engineers often assume that direct-to-chip liquid cooling is exotic, proprietary, OEM-controlled infrastructure end to end. The server-side loop genuinely is. The facility side is not. It is supply and return headers, isolation valves, balancing valves, flow meters, and temperature sensors, built from the same thermoplastic materials that have run chilled water and industrial process loops for decades.</p>
+<p>That is where Harrington works. Our specialty group supports data center mechanical teams on both architectures, with the full material range behind the recommendation: CPVC and PVC for chilled water distribution, PP-R for fusion-joined critical headers, PVDF for high-purity adjacent service, plus double containment systems, actuated valve packages, and the instrumentation that ties the loop back to your BMS.</p>
+<p>Because we support all of it, the recommendation is driven by your operating conditions rather than by a single product line. If your loop is a straightforward 45°F chilled water run and PVC Sch. 80 is the right answer, that is the answer you will get.</p>
+
+<h2>How each architecture distributes fluid</h2>
+<h3>Chilled water distribution</h3>
+<p><b>How the loop works.</b> The architecture most operators already run: a chiller plant produces chilled water, a cooling tower or dry cooler rejects heat, and a facility water loop distributes to CRAH or CRAC units positioned in or around the data hall. Those units transfer heat from the air to the water, and the return loop carries it back to the plant. Air still does the last few feet of work, moving heat from the server to the coil.</p>
+<p><b>Typical operating parameters.</b> Supply water in the 42°F to 45°F range is conventional, with return typically 10°F to 15°F higher depending on load and control strategy. Glycol appears in outdoor circuits, economizer loops, and anywhere freeze protection is required, commonly at 30% to 40% propylene glycol.</p>
+<p><b>What the piping requires.</b> Large-diameter mains and branch runs feeding distributed air handlers, sized against velocity limits rather than pressure alone. CPVC Sch. 80 is a common and appropriate default for primary distribution, with PVC Sch. 80 workable in secondary and lower-criticality runs. Solvent cement joining is standard, isolation valves serve each air handler for maintenance without a hall shutdown, and balancing valves distribute flow evenly across units.</p>
+<p><b>Where it reaches its limit.</b> Air is the constraint, not the water. Above roughly 30 kW to 50 kW per rack, moving enough air through the rack to carry the heat away becomes impractical: fan power climbs, acoustics degrade, and thermal gradients open up inside the cabinet.</p>
+
+<h3>Direct-to-chip liquid cooling</h3>
+<p><b>How the loop works.</b> Liquid reaches the heat source instead of stopping at a coil. Cold plates mount directly to CPUs and GPUs, and a coolant distribution unit (CDU) sits between the building and the rack. The CDU receives facility chilled water on one side, and on the other it pumps and conditions a separate coolant stream out to the cold plates, returning warmed fluid back into the facility loop.</p>
+<p><b>The two loops, and why the distinction matters.</b> This is the point most engineers new to liquid cooling miss. The facility loop runs from the plant to the CDU and back. It is conventional thermoplastic process piping, it is designed and specified by the mechanical team, and it is where Harrington's product range lives. The server-side loop runs from the CDU out to the cold plates. It is typically OEM-managed, chemistry-controlled, and delivered as part of the IT solution. The two are hydraulically isolated so that server-side fluid chemistry stays clean and building water never touches the hardware.</p>
+<p><b>Typical operating parameters.</b> Facility supply water to a CDU is often warmer than a traditional chilled water loop, since cold plates transfer heat far more efficiently than air coils. Warmer supply reduces or eliminates mechanical chilling hours and raises return temperatures, which is also what makes heat recovery viable.</p>
+<p><b>What the piping requires.</b> Supply and return runs to each CDU, commonly 2 in to 6 in at row level with larger hall-level headers upstream. Row distribution manifolds feed multiple CDUs from a common header, requiring branch sizing and flow balancing. Isolation valves at every CDU feed are essential so a single unit can be serviced without draining a row. Automated shutoff valves tied to leak detection are increasingly specified as standard rather than as an upgrade. Fusion-joined PP-R is a growing choice for critical headers precisely because a fused joint has no adhesive layer and no discrete leak path.</p>
+
+<h3>Hybrid: rear-door heat exchangers and in-row cooling</h3>
+<p><b>How they work.</b> Between full air and full liquid sits the transitional tier most colocation operators are deploying today. A rear-door heat exchanger replaces the cabinet's back door with a water-cooled coil, capturing heat as air exits the rack. In-row cooling places water-cooled units between cabinets, shortening the air path dramatically.</p>
+<p><b>What the piping requires.</b> Both have chilled water systems in the DNA of their piping, just distributed differently. Instead of a handful of large runs to perimeter CRAH units, you run many smaller branches into the rack rows themselves, which means more branch connections, more isolation points, and more flexible connections at each unit. Because the piping now lives inside the row rather than at the perimeter, containment and leak detection get more attention.</p>
+<p><b>Where they fit.</b> Rear-door and in-row let an operator raise density substantially without committing the facility to full liquid cooling, which is why they dominate retrofit projects and mixed-tenancy colocation halls.</p>
+
+<h2>Piping requirements compared</h2>
+<div class="tbl"><table><thead><tr><th>Consideration</th><th>Chilled water (CRAH/CRAC)</th><th>Hybrid (rear-door / in-row)</th><th>Direct-to-chip</th></tr></thead><tbody><tr><th>Practical rack density</th><td>Up to ~30 kW</td><td>~30 to 50 kW</td><td>50 kW to 100 kW+</td></tr><tr><th>Facility supply temp</th><td>~42°F to 45°F</td><td>~45°F to 60°F</td><td>Warmer</td></tr><tr><th>Typical pipe material</th><td>PVC or CPVC Sch. 80</td><td>CPVC Sch. 80</td><td>CPVC Sch. 80 or PP-R</td></tr><tr><th>Distribution pattern</th><td>Fewer large runs to perimeter units</td><td>Many small branches into rows</td><td>Headers to row-level CDU manifolds</td></tr><tr><th>Typical branch size</th><td>Large mains, sized to load</td><td>Small branches per unit</td><td>2 in to 6 in at row level</td></tr><tr><th>Joining method</th><td>Solvent cement</td><td>Solvent cement; fusion for critical runs</td><td>Fusion preferred on critical headers</td></tr><tr><th>Glycol exposure</th><td>Common in outdoor/economizer loops</td><td>Common</td><td>Common; verify concentration</td></tr><tr><th>Leak consequence</th><td>Moderate; piping at perimeter</td><td>Elevated; piping in the row</td><td>High; piping at the rack</td></tr><tr><th>Containment</th><td>Selective</td><td>Recommended in-row</td><td>Frequently specified</td></tr><tr><th>Valve automation</th><td>Balancing and isolation</td><td>Isolation per unit</td><td>Automated shutoff per CDU feed</td></tr><tr><th>Maintenance access</th><td>Service at perimeter</td><td>Service within the row</td><td>Isolate individual CDU</td></tr></tbody></table></div>
+
+<h2>Which architecture fits your facility</h2>
+<p><b>Hyperscale and AI factory build-outs</b> go direct-to-chip. At 50 kW and above per rack there is no practical alternative, and these operators are designing for liquid from day one rather than retrofitting into it.</p>
+<p><b>Colocation</b> trends hybrid. Mixed tenancy means mixed density, and rear-door or in-row cooling lets an operator serve a high-density tenant in one row without rebuilding the hall. Many are also running facility piping capable of supporting future CDU deployment.</p>
+<p><b>Enterprise data centers</b> largely stay on chilled water. Densities are moderate, the existing plant is amortized, and the operational case for liquid has not yet arrived. The forward-looking move is sizing new distribution with headroom for later conversion.</p>
+<p><b>Edge facilities</b> use rear-door heat exchangers or conventional chilled water. Constrained footprints and limited to no on-site staffing favor simpler, well-understood systems.</p>
+
+<h2>How Harrington supports both architectures</h2>
+<p>The material logic is consistent across all three approaches.</p>
+<ul>
+<li><b>CPVC Sch. 80</b> for primary chilled water supply and return, rated well above typical loop temperatures with compatibility to 50% glycol at rated conditions.</li>
+<li><b>PVC Sch. 80</b> for secondary distribution and lower-criticality runs where temperature and pressure allow, at meaningful cost savings.</li>
+<li><b>PP-R</b> for fusion-joined critical headers and above-slab runs where a monolithic joint with no adhesive layer is worth the installation premium, with fusion tool rental available through our branch network.</li>
+<li><b>PVDF</b> where high-purity adjacency or aggressive chemistry enters the picture.</li>
+<li><b>Double containment systems</b> for runs above active server rows, under raised floors, and at CDU connections, with point or distributed leak detection.</li>
+<li><b>Actuated valve packages</b> for zone isolation, automatic shutoff on leak detection interlock, and flow balancing, assembled and configured to your control signal.</li>
+<li><b>Instrumentation</b> including flow meters, temperature sensors, pressure gauges, and BTU metering for efficiency and heat-recovery reporting.</li>
+</ul>
+
+<h2>Three steps to a specified cooling loop</h2>
+<ol>
+<li><b>Share your design conditions.</b> Send rack density, cooling architecture, supply and return temperatures, glycol type and concentration, flow rates, and any code or containment requirements. A line list or mechanical drawing set works just as well.</li>
+<li><b>Get an engineering and material review.</b> Our specialists confirm material compatibility at your actual temperature and glycol concentration, verify sizing against velocity limits, and recommend joining method, containment strategy, valve automation, and instrumentation as a coordinated package.</li>
+<li><b>Receive your quote and project support.</b> A quote tied to the specific products for your build, backed by regional branch inventory, fusion equipment rental where the joining method calls for it, and field support through installation.</li>
+</ol>
+
+<h2>Get the piping right before the slab goes down.</h2>
+<p>The cooling architecture decision is reversible on paper and expensive in concrete. Pipe diameter, material, joining method, and containment strategy are all far cheaper to specify correctly now than to retrofit into a hall that is carrying live load. A facility sized and specified properly runs quietly for 20 years. One that was not becomes a capacity ceiling, a leak risk, and a recurring line item in the maintenance budget.</p>
+<p>Whether you are staying with chilled water, moving to direct-to-chip, or building a hybrid hall that has to support both, our data center specialists will confirm the right material, sizing, joining method, and containment approach for your actual operating conditions.</p>
+<p class="note">We always recommend consulting your Harrington sales representative for compatibility, as temperature, chemical, and pressure ratings can vary by manufacturer.</p>
+    </div>
+    <div class="end">
+      <p>Questions about your line? A specialist answers the phone around the clock.</p>
+      <a class="btn btn--secondary" href="knowledge.html#articles">Back to articles</a>
+    </div>
+  </div></div>
+</article>
+<section class="section section--subtle">
+  <div class="container">
+    <div class="sec-head"><div><p class="label">More articles</p><h2>Keep reading.</h2></div><a class="link" href="knowledge.html#articles">All articles</a></div>
+    <div class="posts">
+            <a class="post" data-k="company" href="news-supplier-of-the-year.html"><span class="meta">Company news · Aug 2026</span><h3>Harrington named 2025 Supplier of the Year by Munters</h3><p>Recognition from a long-standing data center cooling customer for delivery performance and technical support.</p></a>
+      <a class="post" data-k="company" href="news-pittston.html"><span class="meta">Company news · Apr 2026</span><h3>Harrington opens new distribution center in Pittston, PA</h3><p>A Northeast hub that puts more stock within a day of New York, New Jersey, and Pennsylvania plants.</p></a>
+      <a class="post" data-k="product" href="news-gf-partnership.html"><span class="meta">Product news · Oct 2025</span><h3>GF Piping Systems partnership expands</h3><p>Full-line access to the Georg Fischer range across the Harrington branch network.</p></a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="foot"><div class="container">
+  <div class="cols">
+    <div>
+      <img src="img/harrington-wht-tagline.svg" alt="Harrington Process Solutions">
+      <p class="mono addr">14480 Yorba Ave.<br>Chino, CA 91710<br><a href="tel:+18008774472" style="display:inline;margin:0">1-800-877-4472</a></p>
+      <p class="tag">Flow Controlled. Value Delivered.™</p>
+    </div>
+    <div><h4>Products</h4><a href="products.html#pipe">Pipe &amp; fittings</a><a href="products.html#valves">Valves &amp; actuation</a><a href="products.html#filtration">Filtration</a><a href="products.html#pumps">Pumps</a><a href="products.html#instrumentation">Instrumentation</a><a href="products.html#tanks">Tanks</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="about.html#leadership">Leadership</a><a href="about.html#timeline">History</a><a href="careers.html">Careers</a><a href="sustainability.html">Sustainability</a><a href="about.html#family">M&amp;A partnerships</a></div>
+    <div><h4>Buy</h4><a href="https://store.hipco.com">Shop online</a><a href="https://store.hipco.com">Store login</a><a href="contact.html#quote">Request a quote</a><a href="suppliers.html#cards">Line cards</a><a href="contact.html#question">Catalog request</a></div>
+    <div><h4>Help</h4><a href="locations.html">Branch locations</a><a href="contact.html">Contact</a><a href="knowledge.html#faq">FAQs</a><a href="legal.html#terms">Terms of sale</a><a href="legal.html#export">Export compliance</a></div>
+  </div>
+  <div class="base">
+    <span>© 2026 Harrington Process Solutions LLC</span>
+    <span><a href="legal.html#privacy">Privacy</a><a href="legal.html#accessibility">Accessibility</a><a href="legal.html#prop65">CA Prop 65</a><a href="https://www.linkedin.com/company/harrington-process-solutions">LinkedIn</a><a href="https://www.youtube.com/@harringtonprocesssolutions">YouTube</a></span>
+  </div>
+</div></footer>
+
+<script>
+  const nav = document.querySelector('.nav');
+  const toggle = nav.querySelector('.nav__toggle');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('nav--open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Close' : 'Menu';
+  });
+</script>
+</body>
+</html>
