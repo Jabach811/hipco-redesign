@@ -420,3 +420,10 @@
 .quote { border-top: 1px solid var(--border); padding-top: var(--space-10); max-width: 60ch; }
 .quote p { font-size: var(--text-xl); line-height: 1.4; }
 .quote footer { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--fg-subtle); }
+
+/* store */
+.store-search { display: flex; gap: var(--space-3); margin-top: var(--space-8); max-width: 40rem; }
+.store-search .input { flex: 1; min-width: 0; }
+.sup__g h3 a { color: inherit; text-decoration: none; }
+.sup__g h3 a:hover, .sup__g li a:hover { color: var(--fg-brand); }
+.sup__g li a { color: inherit; text-decoration: none; }
