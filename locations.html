@@ -26,12 +26,28 @@
 
 <main id="main">
 <section class="page-head">
-  <img class="page-head__bg" src="img/photos/hero-supply.webp" alt="" width="2000" height="1067" fetchpriority="high">
+  <img class="page-head__bg" src="img/fieldwork-v1/shared-hero-process-water-v1.webp" alt="" width="2000" height="1067" fetchpriority="high">
   <div class="container">
     <p class="label">Locations</p>
     <h1>90 branches. One of them is yours.</h1>
     <p class="lede">Harrington and its sister companies stock and ship from 34 states. Call the branch nearest you, or 1-800-877-4472 and we'll route you. Most branches offer will-call pickup (order ahead, pick up at the counter the same day).</p>
     <div class="row section--inverse" style="background:transparent"><a class="btn btn--primary" href="tel:+18008774472">1-800-877-4472</a><a class="btn btn--secondary" href="contact.html">Talk to a branch</a></div>
+  </div>
+</section>
+
+<section class="loc-overview" aria-labelledby="network-title">
+  <div class="container loc-overview__grid">
+    <div>
+      <p class="label">Branch network</p>
+      <h2 id="network-title">Supply is closer than you think.</h2>
+      <p class="muted">Find a branch for a local counter, regional inventory, and the people who know the work in your area.</p>
+    </div>
+    <dl class="loc-stats" aria-label="Harrington branch network at a glance">
+      <div><dt>90</dt><dd>branch locations</dd></div>
+      <div><dt>34</dt><dd>states covered</dd></div>
+      <div><dt>10</dt><dd>specialist companies</dd></div>
+      <div><dt>1</dt><dd>main line to route you</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -42,12 +58,17 @@
     <label class="sr-only" for="st">State</label>
     <select id="st"><option value="">All states</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="FL">Florida</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="NV">Nevada</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="SC">South Carolina</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option></select>
     <label class="chk"><input id="hq" type="checkbox"> Harrington only</label>
+    <button class="find__clear" id="clear-filters" type="button" hidden>Clear filters</button>
     <output id="count" aria-live="polite">90 branches</output>
   </form>
 </div>
 
 <section class="section">
   <div class="container" id="list">
+    <header class="loc-directory__head">
+      <p class="label">Branch directory</p>
+      <p class="muted">Search by city, state, or ZIP. Each branch card includes direct contact details and directions.</p>
+    </header>
     <section class="st" id="az" data-st="AZ">
       <h2>Arizona <span class="n">5</span></h2>
       <ul>
@@ -706,7 +727,7 @@
 </main>
 <script>
 (function(){
-  var q=document.getElementById('q'),st=document.getElementById('st'),hq=document.getElementById('hq'),count=document.getElementById('count'),none=document.getElementById('none');
+  var q=document.getElementById('q'),st=document.getElementById('st'),hq=document.getElementById('hq'),clear=document.getElementById('clear-filters'),count=document.getElementById('count'),none=document.getElementById('none');
   var groups=[].slice.call(document.querySelectorAll('.st'));
   function run(){
     var t=q.value.trim().toLowerCase(),s=st.value,h=hq.checked,total=0;
@@ -720,8 +741,10 @@
     });
     count.textContent=total+(total===1?' branch':' branches');
     none.hidden=total>0;
+    clear.hidden=!t&&!s&&!h;
   }
   q.addEventListener('input',run); st.addEventListener('change',run); hq.addEventListener('change',run);
+  clear.addEventListener('click',function(){q.value='';st.value='';hq.checked=false;run();q.focus();});
 })();
 </script>
 <footer class="foot"><div class="container">
